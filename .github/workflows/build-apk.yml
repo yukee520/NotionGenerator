@@ -48,10 +48,14 @@ jobs:
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          JAVA_HOME: ${{ env.JAVA_HOME }}
         run: |
+          echo "JAVA_HOME=$JAVA_HOME"
+          java -version
+          ls "$JAVA_HOME/lib/tools.jar" || echo "WARNING: tools.jar missing (JRE, not JDK)"
           chmod +x gradlew
-          ./gradlew assembleRelease --no-daemon --stacktrace
-
+          ./gradlew assembleRelease --no-daemon --stacktrace --info
+    
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
