@@ -1,4 +1,4 @@
-package com.rntest
+package com.yukee520.notiongenerator
 
 import android.app.Application
 import com.facebook.react.PackageList
