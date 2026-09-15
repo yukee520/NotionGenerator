@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ['./App.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+  content: ['./App.tsx', './src/**/*.{js,jsx,ts,tsx}'],
   presets: [require('nativewind/preset')],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
         primary: '#2563EB',
+        'primary-dark': '#1D4ED8',
         secondary: '#64748B',
         background: '#F8FAFC',
         card: '#FFFFFF',
@@ -13,6 +15,26 @@ module.exports = {
         muted: '#94A3B8',
         danger: '#EF4444',
         success: '#10B981',
+        warning: '#F59E0B',
+        border: '#E2E8F0',
+        'dark-primary': '#3B82F6',
+        'dark-primary-dark': '#2563EB',
+        'dark-secondary': '#94A3B8',
+        'dark-background': '#0F172A',
+        'dark-card': '#1E293B',
+        'dark-text': '#F1F5F9',
+        'dark-muted': '#64748B',
+        'dark-danger': '#F87171',
+        'dark-success': '#34D399',
+        'dark-warning': '#FBBF24',
+        'dark-border': '#334155',
+      },
+      borderRadius: {
+        sm: '6px',
+        md: '10px',
+        lg: '14px',
+        xl: '20px',
+        pill: '999px',
       },
     },
   },
