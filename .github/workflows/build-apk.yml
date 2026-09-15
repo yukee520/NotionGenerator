@@ -75,6 +75,17 @@ jobs:
           chmod +x gradlew
           ./gradlew assembleRelease --no-daemon --stacktrace --info
 
+      - name: Extract Gradle error
+        if: failure()
+        working-directory: android
+        run: |
+          echo "=========================================="
+          echo "GRADLE FAILURE SUMMARY"
+          echo "=========================================="
+          ./gradlew assembleRelease --no-daemon --stacktrace 2>&1 \
+            | grep -A 40 "What went wrong" \
+            | head -80 || echo "No 'What went wrong' found"
+
       - name: Upload APK artifact
         if: always()
         uses: actions/upload-artifact@v4
