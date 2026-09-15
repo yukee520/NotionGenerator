@@ -65,6 +65,15 @@ jobs:
           echo "=== gradle version ==="
           ./gradlew --version --no-daemon 2>&1 | head -20
 
+      - name: Test Metro bundle (shows JS errors)
+        run: |
+          npx react-native bundle \
+            --platform android \
+            --dev false \
+            --entry-file index.js \
+            --bundle-output /tmp/test.bundle \
+            --assets-dest /tmp/test-assets
+
       - name: Build Release APK
         working-directory: android
         env:
