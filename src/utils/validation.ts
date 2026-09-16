@@ -12,12 +12,8 @@ export function hasMinLength(value: string | undefined | null, min: number): boo
 
 export function isValidUrl(value: string | undefined | null): boolean {
   if (!isNonEmpty(value)) return false;
-  try {
-    const url = new URL(value as string);
-    return url.protocol === 'http:' || url.protocol === 'https:';
-  } catch {
-    return false;
-  }
+  const trimmed = (value as string).trim();
+  return /^https?:\/\/.+/i.test(trimmed);
 }
 
 export interface ValidationErrors {
